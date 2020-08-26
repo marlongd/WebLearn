@@ -1,0 +1,14 @@
+﻿@model Vidly_authenticate.ViewModels.CustomerViewModel
+@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer</h2>
+<ul>
+    @{ var i = 0; }
+    @foreach (var customer in Model.Customers)
+    {
+        <li class="nav-item">@Html.ActionLink(customer.Name, "Details", "Customer", new { id = i++ }, new { @class = "nav-link" })</li>
+    }
+</ul>
