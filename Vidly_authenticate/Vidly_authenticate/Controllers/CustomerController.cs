@@ -13,23 +13,24 @@ namespace Vidly_authenticate.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            var Customers = getCustomers();
+            var Customers =  getCustomers();
 
             return View(Customers);
         }
 
         public ActionResult Details(int id)
         {
-            string name = "WHAT";
-            return Content("id:" + name);
+            var customer = getCustomers().SingleOrDefault(x => x.Id == id);
+            if (customer == null) { return HttpNotFound(); }
+            else {return View(customer); }
         }
 
         private IEnumerable<Customer> getCustomers()
         {
             List<Customer> customers = new List<Customer>
             {
-                new Customer {Name = "Customer 1"},
-                new Customer {Name = "Customer 2"}
+                new Customer {Id = 1, Name = "Customer 1"},
+                new Customer {Id = 2, Name = "Customer 2"}
             };
 
             return customers;

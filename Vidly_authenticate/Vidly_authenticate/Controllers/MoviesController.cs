@@ -14,8 +14,8 @@ namespace Vidly_authenticate.Controllers
         public ActionResult Random()
         {
             var movie = new Movie() { Name = "Shrek!" };
-            //return View(movie);
-            return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
+            return View(movie);
+            
         }
 
         public ActionResult Edit(int id)
@@ -24,16 +24,32 @@ namespace Vidly_authenticate.Controllers
         }
         public ActionResult Index(int? pageIndex, string sortBy)
         {
-            if (!pageIndex.HasValue) { pageIndex = 1;  }
-            if (String.IsNullOrWhiteSpace(sortBy)) { sortBy = "Name"; }
+            var movie = getMovies();
+            return View(movie);
+        }
 
-            return Content(String.Format("pageIndex ={0}&sortBy={1}", pageIndex, sortBy));
+        public ActionResult Details(int id)
+        {
+            var movie = getMovies().SingleOrDefault(x => x.Id == id);
+            if (movie == null) { return HttpNotFound(); }
+            else { return View(movie); }
         }
 
         [Route("movies/released/{year}/{month:regex(\\d{4})}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(year + "/" + month);
+        }
+
+        private IEnumerable<Movie> getMovies()
+        {
+            List<Movie> movies = new List<Movie>
+            {
+                new Movie {Id = 1, Name = "SHREK"},
+                new Movie {Id = 2, Name = "WALL-e"}
+            };
+
+            return movies;
         }
     }
 }
