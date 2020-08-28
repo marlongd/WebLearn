@@ -200,6 +200,18 @@
     <Compile Include="Migrations\202008262122085_ApplyAnnotationToCustomerName.designer.cs">
       <DependentUpon>202008262122085_ApplyAnnotationToCustomerName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008281800195_addingNametoMembershipType.cs" />
+    <Compile Include="Migrations\202008281800195_addingNametoMembershipType.designer.cs">
+      <DependentUpon>202008281800195_addingNametoMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008281821265_PopulateMembershipTypesNames.cs" />
+    <Compile Include="Migrations\202008281821265_PopulateMembershipTypesNames.designer.cs">
+      <DependentUpon>202008281821265_PopulateMembershipTypesNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008281850472_AddingBirthdateToCustomer.cs" />
+    <Compile Include="Migrations\202008281850472_AddingBirthdateToCustomer.designer.cs">
+      <DependentUpon>202008281850472_AddingBirthdateToCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -400,6 +412,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008262122085_ApplyAnnotationToCustomerName.resx">
       <DependentUpon>202008262122085_ApplyAnnotationToCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008281800195_addingNametoMembershipType.resx">
+      <DependentUpon>202008281800195_addingNametoMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008281821265_PopulateMembershipTypesNames.resx">
+      <DependentUpon>202008281821265_PopulateMembershipTypesNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008281850472_AddingBirthdateToCustomer.resx">
+      <DependentUpon>202008281850472_AddingBirthdateToCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

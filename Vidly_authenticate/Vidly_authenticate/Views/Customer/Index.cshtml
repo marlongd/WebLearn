@@ -10,10 +10,26 @@
 {
     <h2>We don't have any customers</h2>
 }
-<ul>
+else
+{
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Cusotmer</th>
+            <th>Discount Rate</th>
 
-    @foreach (var customer in Model)
-    {
-        <li class="nav-item">@Html.ActionLink(customer.Name, "Details", "Customer", new { id = customer.Id }, null)</li>
-    }
-</ul>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+        <tr>
+            <td>@Html.ActionLink(customer.Name, "Details", "Customer", new { id = customer.Id }, null)</td>
+            <td>@customer.MembershipType.Name</td>
+            
+        </tr>
+        }
+
+    </tbody>
+</table>
+}
