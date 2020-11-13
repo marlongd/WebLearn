@@ -34,8 +34,12 @@ namespace Vidly_authenticate.Controllers
         {
             var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
             if (customer == null) { return HttpNotFound(); }
-            else {return View(customer); }
+            else { return View(customer); }
         }
 
+        public ActionResult newCustomer()
+        {
+            return View();
+        }
     }
 }
