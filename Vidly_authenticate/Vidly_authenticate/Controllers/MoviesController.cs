@@ -5,11 +5,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly_authenticate.Models;
+using System.Data.Entity;
 
 namespace Vidly_authenticate.Controllers
 {
     public class MoviesController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
         // GET: Movies/Random
         public ActionResult Random()
         {
@@ -24,13 +31,15 @@ namespace Vidly_authenticate.Controllers
         }
         public ActionResult Index(int? pageIndex, string sortBy)
         {
-            var movie = getMovies();
-            return View(movie);
+            var movies = _context.Movies.Include(c => c.Genres).ToList();
+
+            return View(movies);
+            
         }
 
         public ActionResult Details(int id)
         {
-            var movie = getMovies().SingleOrDefault(x => x.Id == id);
+            var movie = _context.Movies.Include(c => c.Genres).SingleOrDefault(x => x.Id == id);
             if (movie == null) { return HttpNotFound(); }
             else { return View(movie); }
         }
@@ -41,15 +50,5 @@ namespace Vidly_authenticate.Controllers
             return Content(year + "/" + month);
         }
 
-        private IEnumerable<Movie> getMovies()
-        {
-            List<Movie> movies = new List<Movie>
-            {
-                new Movie {Id = 1, Name = "SHREK"},
-                new Movie {Id = 2, Name = "WALL-e"}
-            };
-
-            return movies;
-        }
     }
 }

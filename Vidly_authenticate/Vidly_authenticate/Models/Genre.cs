@@ -6,17 +6,11 @@ using System.Web;
 
 namespace Vidly_authenticate.Models
 {
-    public class Customer
+    public class Genre
     {
+        [Required]
         public int Id { get; set; }
         [Required]
-        [StringLength(255)]
         public string Name { get; set; }
-        public bool IsSubscribedToNewsletter { get; set; }
-        public MembershipType MembershipType { get; set; }
-        public byte MembershipTypeId { get; set; }
-
-        public DateTime? birthDate { get; set; }
-
     }
 }
