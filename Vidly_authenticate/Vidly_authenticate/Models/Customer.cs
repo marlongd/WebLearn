@@ -16,6 +16,7 @@ namespace Vidly_authenticate.Models
         public MembershipType MembershipType { get; set; }
         public byte MembershipTypeId { get; set; }
         [Display(Name = "Date of Birth")]
+        [MinAge]
         public DateTime? birthDate { get; set; }
 
     }
