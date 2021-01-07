@@ -1,7 +1,7 @@
 # WebLearn
 Learning ASP.NET
 <h2>Dating APP:</h2>
-<p>Build a video rental store using ASP.NET Web API using RESTful syntax.
+<p>Build a dating App using ASP.NET Web API using RESTful syntax.
 for the front end Angular was used to communicate with the API</p>
 
 
