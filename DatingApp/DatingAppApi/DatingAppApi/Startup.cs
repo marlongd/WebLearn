@@ -33,8 +33,10 @@ namespace DatingAppApi
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
             services.AddControllers();
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<Seed>();
             services.AddCors();
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IDatingRepository, DatingRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => {
                     options.TokenValidationParameters = new TokenValidationParameters
@@ -48,12 +50,13 @@ namespace DatingAppApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, Seed seeder)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            seeder.SeedUsers();
             app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             app.UseAuthentication();
 
