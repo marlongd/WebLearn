@@ -58,7 +58,7 @@ namespace DatingAppApi
             {
                 app.UseDeveloperExceptionPage();
             }
-            seeder.SeedUsers();
+            //seeder.SeedUsers();
             app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             app.UseAuthentication();
 

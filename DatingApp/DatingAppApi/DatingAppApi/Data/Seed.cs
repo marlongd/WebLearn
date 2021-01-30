@@ -19,6 +19,10 @@ namespace DatingAppApi.Data
 
         public void SeedUsers()
         {
+            //remove users
+            List<User> toRemove = _context.Users.ToList();
+            _context.Users.RemoveRange(toRemove);
+            _context.SaveChanges();
             //seed Users
 
             var userData = System.IO.File.ReadAllText("Data/066 UserSeedData.json");
