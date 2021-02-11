@@ -30,7 +30,7 @@ render(){
     contactsToShow.sort(sortBy('name'))
         return(
             <div className='list-contacts'>
-                {/*JSON.stringify(this.state)*/}
+                {JSON.stringify(this.props.contacts[0])}
                 <div className='list-contacts-top'>
                     <input
                     className='search-contacts'
